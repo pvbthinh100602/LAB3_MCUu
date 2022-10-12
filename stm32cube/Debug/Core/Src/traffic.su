@@ -1,0 +1,6 @@
+traffic.c:9:6:set_traffic1_red	8	static
+traffic.c:15:6:set_traffic2_red	8	static
+traffic.c:21:6:set_traffic1_green	8	static
+traffic.c:27:6:set_traffic2_green	8	static
+traffic.c:33:6:set_traffic1_yellow	8	static
+traffic.c:39:6:set_traffic2_yellow	8	static
