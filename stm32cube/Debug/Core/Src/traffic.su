@@ -4,3 +4,5 @@ traffic.c:21:6:set_traffic1_green	8	static
 traffic.c:27:6:set_traffic2_green	8	static
 traffic.c:33:6:set_traffic1_yellow	8	static
 traffic.c:39:6:set_traffic2_yellow	8	static
+traffic.c:45:6:display_traffic_7SEG	16	static
+traffic.c:52:6:display_7SEG	24	static

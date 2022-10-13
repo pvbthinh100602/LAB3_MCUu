@@ -15,12 +15,10 @@
 #define BUTTON_NORMAL		GPIO_PIN_SET
 #define BUTTON_IS_PRESSED	GPIO_PIN_RESET
 
-#define DURATION_AUTO_INCREASING	1000
+#define DURATION_AUTO_INCREASING	500
 
 extern int button_flag[NO_OF_BUTTONS];
 
 void button_reading(void);
-int is_button_pressed(int index);
-int is_button_pressed_1s(int index);
 
 #endif /* INC_BUTTON_H_ */

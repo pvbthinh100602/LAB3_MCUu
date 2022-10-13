@@ -12,7 +12,6 @@
 #include "button.h"
 #include "main.h"
 #include "traffic.h"
-#include "fsm_button.h"
 
 #define INIT		1
 #define AUTO_RED1	2
@@ -25,5 +24,13 @@
 #define MAN_YELLOW	14
 
 extern int status;
+
+extern int config_red;
+extern int config_green;
+extern int config_yellow;
+
+extern int counter_red;
+extern int counter_green;
+extern int counter_yellow;
 
 #endif /* INC_GLOBAL_H_ */

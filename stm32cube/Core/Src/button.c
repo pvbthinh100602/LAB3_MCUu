@@ -12,8 +12,7 @@ static GPIO_PinState debounce_buffer1[NO_OF_BUTTONS];
 static GPIO_PinState debounce_buffer2[NO_OF_BUTTONS];
 static GPIO_PinState debounce_buffer3[NO_OF_BUTTONS];
 
-static uint8_t flag_button_pressed_1s[NO_OF_BUTTONS];
-static uint16_t counter_button_pressed_1s[NO_OF_BUTTONS];
+static uint8_t counter_button_pressed_1s[NO_OF_BUTTONS];
 
 int button_flag[NO_OF_BUTTONS] = {0, 0, 0};
 
@@ -39,12 +38,4 @@ void button_reading(void){
 	}
 }
 
-int is_button_pressed(int index){
-	if(index < 0 || index >= NO_OF_BUTTONS) return 0;
-	return button_buffer[index] == BUTTON_IS_PRESSED;
-}
 
-int is_button_pressed_1s(int index){
-	if(index < 0 || index >= NO_OF_BUTTONS) return 0;
-	return flag_button_pressed_1s[index] == 1;
-}

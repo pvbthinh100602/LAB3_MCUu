@@ -91,6 +91,13 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
   status = INIT;
+//  config_red = 5000;
+//  config_green = 3000;
+//  config_yellow = 2000;
+//
+//  counter_red = config_red;
+//  counter_green = config_green;
+//  counter_yellow = config_yellow;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -205,19 +212,19 @@ static void MX_GPIO_Init(void)
                           |LED_RED2_Pin|LED_GREEN2_Pin|LED_YELLOW2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_10
-                          |GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14
-                          |GPIO_PIN_15|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5
-                          |GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, DRIVER_7SEG_A0_Pin|DRIVER_7SEG_B0_Pin|DRIVER_7SEG_C0_Pin|DRIVER_7SEG_C2_Pin
+                          |DRIVER_7SEG_D2_Pin|DRIVER_7SEG_A3_Pin|DRIVER_7SEG_B3_Pin|DRIVER_7SEG_C3_Pin
+                          |DRIVER_7SEG_D3_Pin|DRIVER_7SEG_D0_Pin|DRIVER_7SEG_A1_Pin|DRIVER_7SEG_B1_Pin
+                          |DRIVER_7SEG_C1_Pin|DRIVER_7SEG_D1_Pin|DRIVER_7SEG_A2_Pin|DRIVER_7SEG_B2_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : BUTTON1_Pin */
-  GPIO_InitStruct.Pin = BUTTON1_Pin;
+  /*Configure GPIO pin : BUTTON0_Pin */
+  GPIO_InitStruct.Pin = BUTTON0_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(BUTTON1_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(BUTTON0_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : BUTTON2_Pin BUTTON3_Pin */
-  GPIO_InitStruct.Pin = BUTTON2_Pin|BUTTON3_Pin;
+  /*Configure GPIO pins : BUTTON1_Pin BUTTON2_Pin */
+  GPIO_InitStruct.Pin = BUTTON1_Pin|BUTTON2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -231,14 +238,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB0 PB1 PB2 PB10
-                           PB11 PB12 PB13 PB14
-                           PB15 PB3 PB4 PB5
-                           PB6 PB7 PB8 PB9 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_10
-                          |GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14
-                          |GPIO_PIN_15|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5
-                          |GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9;
+  /*Configure GPIO pins : DRIVER_7SEG_A0_Pin DRIVER_7SEG_B0_Pin DRIVER_7SEG_C0_Pin DRIVER_7SEG_C2_Pin
+                           DRIVER_7SEG_D2_Pin DRIVER_7SEG_A3_Pin DRIVER_7SEG_B3_Pin DRIVER_7SEG_C3_Pin
+                           DRIVER_7SEG_D3_Pin DRIVER_7SEG_D0_Pin DRIVER_7SEG_A1_Pin DRIVER_7SEG_B1_Pin
+                           DRIVER_7SEG_C1_Pin DRIVER_7SEG_D1_Pin DRIVER_7SEG_A2_Pin DRIVER_7SEG_B2_Pin */
+  GPIO_InitStruct.Pin = DRIVER_7SEG_A0_Pin|DRIVER_7SEG_B0_Pin|DRIVER_7SEG_C0_Pin|DRIVER_7SEG_C2_Pin
+                          |DRIVER_7SEG_D2_Pin|DRIVER_7SEG_A3_Pin|DRIVER_7SEG_B3_Pin|DRIVER_7SEG_C3_Pin
+                          |DRIVER_7SEG_D3_Pin|DRIVER_7SEG_D0_Pin|DRIVER_7SEG_A1_Pin|DRIVER_7SEG_B1_Pin
+                          |DRIVER_7SEG_C1_Pin|DRIVER_7SEG_D1_Pin|DRIVER_7SEG_A2_Pin|DRIVER_7SEG_B2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
