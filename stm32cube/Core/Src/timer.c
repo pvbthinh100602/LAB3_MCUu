@@ -29,3 +29,8 @@ void timer_run(){
 		if(timer2_counter == 0) timer2_flag = 1;
 	}
 }
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	timer_run();
+	button_reading();
+}

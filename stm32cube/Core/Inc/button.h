@@ -8,17 +8,17 @@
 #ifndef INC_BUTTON_H_
 #define INC_BUTTON_H_
 
-#include "global.h"
+#include "main.h"
+#include "timer.h"
 
 #define NO_OF_BUTTONS 3
+#define TIME_OUT_FOR_KEY_PRESSED 500
 
-#define BUTTON_NORMAL		GPIO_PIN_SET
-#define BUTTON_IS_PRESSED	GPIO_PIN_RESET
+#define PRESSED_STATE 0
+#define RELEASED_STATE 1
 
-#define DURATION_AUTO_INCREASING	500
+extern int button_flag[];
 
-extern int button_flag[NO_OF_BUTTONS];
-
-void button_reading(void);
+void button_reading();
 
 #endif /* INC_BUTTON_H_ */

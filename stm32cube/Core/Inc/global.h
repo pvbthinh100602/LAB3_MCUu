@@ -10,27 +10,24 @@
 
 #include "timer.h"
 #include "button.h"
-#include "main.h"
-#include "traffic.h"
 
 #define INIT		1
+
 #define AUTO_RED1	2
 #define AUTO_RED2	3
 #define AUTO_GREEN	4
-#define AUTO_YELLOW	5
+#define AUTO_YELLOW 5
 
-#define MAN_RED		12
-#define MAN_GREEN	13
-#define MAN_YELLOW	14
+#define MAN_RED 	11
+#define MAN_GREEN	12
+#define MAN_YELLOW	13
+
+#define BLINKY_TIME	500
 
 extern int status;
 
 extern int config_red;
 extern int config_green;
 extern int config_yellow;
-
-extern int counter_red;
-extern int counter_green;
-extern int counter_yellow;
 
 #endif /* INC_GLOBAL_H_ */

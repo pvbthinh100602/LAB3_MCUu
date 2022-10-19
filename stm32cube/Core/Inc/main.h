@@ -32,11 +32,6 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "timer.h"
-#include "button.h"
-#include "fsm_automatic.h"
-#include "global.h"
-#include "fsm_manual.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
