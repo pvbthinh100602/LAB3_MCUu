@@ -21,5 +21,8 @@ void set_traffic2_yellow();
 void display_traffic_7SEG(int, unsigned int);
 void display_7SEG(int, unsigned int);
 
+void toggle_traffic_red();
+void toggle_traffic_green();
+void toggle_traffic_yellow();
 
 #endif /* INC_TRAFFIC_H_ */

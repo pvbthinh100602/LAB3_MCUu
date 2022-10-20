@@ -9,6 +9,7 @@
 #define INC_FSM_MANUAL_H_
 
 #include "global.h"
+#include "traffic.h"
 
 void fsm_manual_run();
 

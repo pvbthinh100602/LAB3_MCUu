@@ -30,4 +30,8 @@ extern int config_red;
 extern int config_green;
 extern int config_yellow;
 
+extern int counter_red;
+extern int counter_green;
+extern int counter_yellow;
+
 #endif /* INC_GLOBAL_H_ */

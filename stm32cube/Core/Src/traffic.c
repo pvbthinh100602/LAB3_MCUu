@@ -42,6 +42,21 @@ void set_traffic2_yellow(){
 	HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, GPIO_PIN_RESET);
 }
 
+void toggle_traffic_red(){
+	HAL_GPIO_TogglePin(LED_RED1_GPIO_Port, LED_RED1_Pin);
+	HAL_GPIO_TogglePin(LED_RED2_GPIO_Port, LED_RED2_Pin);
+}
+
+void toggle_traffic_green(){
+	HAL_GPIO_TogglePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin);
+	HAL_GPIO_TogglePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin);
+}
+
+void toggle_traffic_yellow(){
+	HAL_GPIO_TogglePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin);
+	HAL_GPIO_TogglePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin);
+}
+
 void display_traffic_7SEG(int index, unsigned int num){
 	if(index < 0 || index >= 2) return;
 	if(num < 0 || num >= 100) return;
