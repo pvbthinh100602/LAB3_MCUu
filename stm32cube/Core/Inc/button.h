@@ -12,7 +12,8 @@
 #include "timer.h"
 
 #define NO_OF_BUTTONS 3
-#define TIME_OUT_FOR_KEY_PRESSED 500
+#define TIME_OUT_FOR_KEY_PRESSED 200
+#define WAITING_TIME 1000
 
 #define PRESSED_STATE 0
 #define RELEASED_STATE 1
