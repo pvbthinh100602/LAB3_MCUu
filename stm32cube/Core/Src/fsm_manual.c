@@ -17,6 +17,24 @@ void fsm_manual_run(){
 				setTimer1(BLINKY_TIME);
 			}
 
+			if(button_flag[1] == 1){
+				//button2 pressed, increase value
+				button_flag[1] = 0;
+				counter_red++;
+				if(counter_red > 99) counter_red = 2;
+				display_traffic_7SEG(1, counter_red);
+			}
+
+			if(button_flag[2] == 1){
+				//button3 pressed, update the value
+				button_flag[2] = 0;
+				config_red = counter_red;
+				if(config_red <= config_green){
+					config_green = config_red - 1;
+				}
+				config_yellow = config_red - config_green;
+			}
+
 			if(button_flag[0] == 1){
 				//button1 pressed, switch to MAN_GREEN
 				status = MAN_GREEN;
@@ -37,6 +55,24 @@ void fsm_manual_run(){
 				setTimer1(BLINKY_TIME);
 			}
 
+			if(button_flag[1] == 1){
+				//button2 pressed, increase value
+				button_flag[1] = 0;
+				counter_green++;
+				if(counter_green > 99) counter_green = 1;
+				display_traffic_7SEG(1, counter_green);
+			}
+
+			if(button_flag[2] == 1){
+				//button3 pressed, update the value
+				button_flag[2] = 0;
+				config_green = counter_green;
+				if(config_red <= config_green){
+					config_red = config_green + 1;
+				}
+				config_yellow = config_red - config_green;
+			}
+
 			if(button_flag[0] == 1){
 				//button1 pressed, switch to MAN_YELLOW
 				status = MAN_YELLOW;
@@ -55,6 +91,21 @@ void fsm_manual_run(){
 				//blinky led
 				toggle_traffic_yellow();
 				setTimer1(BLINKY_TIME);
+			}
+
+			if(button_flag[1] == 1){
+				//button2 pressed, increase value
+				button_flag[1] = 0;
+				counter_yellow++;
+				if(counter_yellow > 99) counter_yellow = 1;
+				display_traffic_7SEG(1, counter_yellow);
+			}
+
+			if(button_flag[2] == 1){
+				//button3 pressed, update the value
+				button_flag[2] = 0;
+				config_yellow = counter_yellow;
+				config_red = config_yellow + config_green;
 			}
 
 			if(button_flag[0] == 1){
