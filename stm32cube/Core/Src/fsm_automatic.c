@@ -49,6 +49,7 @@ void fsm_automatic_run(){
 				set_traffic2_red();
 				setTimer1(BLINKY_TIME);
 				//set up for display 7seg
+				counter_red = config_red;
 				display_traffic_7SEG(0, 1);
 				display_traffic_7SEG(1, config_red);
 			}
