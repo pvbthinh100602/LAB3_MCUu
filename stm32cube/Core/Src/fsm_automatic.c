@@ -40,9 +40,8 @@ void fsm_automatic_run(){
 				setTimer2(1000);
 			}
 
-			if(button_flag[0] == 1){
+			if(isButtonPressed(0) == 1){
 				//button1 pressed, switch to MAN_RED
-				button_flag[0] = 0;
 				status = MAN_RED;
 				// set up for blinky led
 				set_traffic1_red();
@@ -77,9 +76,8 @@ void fsm_automatic_run(){
 				setTimer2(1000);
 			}
 
-			if(button_flag[0] == 1){
+			if(isButtonPressed(0) == 1){
 				//button1 pressed, switch to MAN_RED
-				button_flag[0] = 0;
 				status = MAN_RED;
 				set_traffic1_red();
 				set_traffic2_red();
@@ -113,9 +111,8 @@ void fsm_automatic_run(){
 				setTimer2(1000);
 			}
 
-			if(button_flag[0] == 1){
+			if(isButtonPressed(0) == 1){
 				//button1 pressed, switch to MAN_RED
-				button_flag[0] = 0;
 				status = MAN_RED;
 				// set up for blinky led
 				set_traffic1_red();
@@ -150,9 +147,8 @@ void fsm_automatic_run(){
 				setTimer2(1000);
 			}
 
-			if(button_flag[0] == 1){
+			if(isButtonPressed(0) == 1){
 				//button1 pressed, switch to MAN_RED
-				button_flag[0] = 0;
 				status = MAN_RED;
 				// set up for blinky led
 				set_traffic1_red();

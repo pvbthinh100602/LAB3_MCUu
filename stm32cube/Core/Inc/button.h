@@ -18,8 +18,12 @@
 #define PRESSED_STATE 0
 #define RELEASED_STATE 1
 
-extern int button_flag[];
+#define BUTTON_IS_PRESSED 11
+#define BUTTON_IS_RELEASED 12
+#define BUTTON_IS_PRESSED_IN_PERIOD 13
 
 void button_reading();
+void button_process(int);
+int isButtonPressed(int);
 
 #endif /* INC_BUTTON_H_ */
