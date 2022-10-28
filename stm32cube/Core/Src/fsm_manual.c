@@ -21,7 +21,7 @@ void fsm_manual_run(){
 				//button2 pressed, increase value
 				counter_red++;
 				if(counter_red > 99) counter_red = 2;
-				display_traffic_7SEG(1, counter_red);
+				updateBuffer7SEG(1, counter_red);
 			}
 
 			if(isButtonPressed(2) == 1){
@@ -40,8 +40,7 @@ void fsm_manual_run(){
 				set_traffic2_green();
 				setTimer1(BLINKY_TIME);
 				counter_green = config_green;
-				display_traffic_7SEG(0, 2);
-				display_traffic_7SEG(1, counter_green);
+				updateBuffer7SEG(2, counter_green);
 			}
 			break;
 		case MAN_GREEN:
@@ -56,7 +55,7 @@ void fsm_manual_run(){
 				//button2 pressed, increase value
 				counter_green++;
 				if(counter_green > 99) counter_green = 1;
-				display_traffic_7SEG(1, counter_green);
+				updateBuffer7SEG(2, counter_green);
 			}
 
 			if(isButtonPressed(2) == 1){
@@ -75,8 +74,7 @@ void fsm_manual_run(){
 				set_traffic2_yellow();
 				setTimer1(BLINKY_TIME);
 				counter_yellow = config_yellow;
-				display_traffic_7SEG(0, 3);
-				display_traffic_7SEG(1, counter_yellow);
+				updateBuffer7SEG(3, counter_yellow);
 			}
 			break;
 		case MAN_YELLOW:
@@ -91,7 +89,7 @@ void fsm_manual_run(){
 				//button2 pressed, increase value
 				counter_yellow++;
 				if(counter_yellow > 99) counter_yellow = 1;
-				display_traffic_7SEG(1, counter_yellow);
+				updateBuffer7SEG(3, counter_yellow);
 			}
 
 			if(isButtonPressed(2) == 1){
@@ -107,8 +105,7 @@ void fsm_manual_run(){
 				setTimer2(1000);
 				counter_red = config_red;
 				counter_green = config_green;
-				display_traffic_7SEG(0, counter_red--);
-				display_traffic_7SEG(1, counter_green--);
+				updateBuffer7SEG(counter_red--, counter_green--);
 			}
 			break;
 		default:

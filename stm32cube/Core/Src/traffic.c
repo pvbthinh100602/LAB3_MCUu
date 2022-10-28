@@ -6,6 +6,9 @@
  */
 #include "traffic.h"
 
+int led_buffer[4] = {0,0,0,0};
+int led_index = 0;
+
 void set_traffic1_red(){
 	HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, GPIO_PIN_SET);
@@ -57,46 +60,85 @@ void toggle_traffic_yellow(){
 	HAL_GPIO_TogglePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin);
 }
 
-void display_traffic_7SEG(int index, unsigned int num){
-	if(index < 0 || index >= 2) return;
-	if(num < 0 || num >= 100) return;
-	display_7SEG(index*2, num/10);
-	display_7SEG(index*2 + 1, num%10);
+void updateBuffer7SEG(int first, int second){
+	led_buffer[0] = first/10;
+	led_buffer[1] = first%10;
+	led_buffer[2] = second/10;
+	led_buffer[3] = second%10;
 }
 
-void display_7SEG(int index, unsigned int num){
-	if(num < 0 || num >= 10) return;
-	uint16_t pinA, pinB, pinC, pinD;
+void update7SEG(int index){
+	if(index < 0 || index >= 4) return;
+	HAL_GPIO_WritePin(GPIOB, EN0_Pin|EN1_Pin|EN2_Pin|EN3_Pin, GPIO_PIN_SET);
+	display_7SEG(led_buffer[index]);
 	switch(index){
 	case 0:
-		pinA = DRIVER_7SEG_A0_Pin;
-		pinB = DRIVER_7SEG_B0_Pin;
-		pinC = DRIVER_7SEG_C0_Pin;
-		pinD = DRIVER_7SEG_D0_Pin;
+		HAL_GPIO_WritePin(GPIOB, EN0_Pin, GPIO_PIN_RESET);
 		break;
 	case 1:
-		pinA = DRIVER_7SEG_A1_Pin;
-		pinB = DRIVER_7SEG_B1_Pin;
-		pinC = DRIVER_7SEG_C1_Pin;
-		pinD = DRIVER_7SEG_D1_Pin;
+		HAL_GPIO_WritePin(GPIOB, EN1_Pin, GPIO_PIN_RESET);
 		break;
 	case 2:
-		pinA = DRIVER_7SEG_A2_Pin;
-		pinB = DRIVER_7SEG_B2_Pin;
-		pinC = DRIVER_7SEG_C2_Pin;
-		pinD = DRIVER_7SEG_D2_Pin;
+		HAL_GPIO_WritePin(GPIOB, EN2_Pin, GPIO_PIN_RESET);
 		break;
 	case 3:
-		pinA = DRIVER_7SEG_A3_Pin;
-		pinB = DRIVER_7SEG_B3_Pin;
-		pinC = DRIVER_7SEG_C3_Pin;
-		pinD = DRIVER_7SEG_D3_Pin;
+		HAL_GPIO_WritePin(GPIOB, EN3_Pin, GPIO_PIN_RESET);
 		break;
 	default:
-		return;
+		break;
 	}
-	HAL_GPIO_WritePin(GPIOB, pinA, num & 0x01);
-	HAL_GPIO_WritePin(GPIOB, pinB, (num >> 1) & 0x01);
-	HAL_GPIO_WritePin(GPIOB, pinC, (num >> 2) & 0x01);
-	HAL_GPIO_WritePin(GPIOB, pinD, (num >> 3) & 0x01);
+}
+
+void display_7SEG(int num){
+	HAL_GPIO_WritePin(GPIOB, LED7SEG_A_Pin|LED7SEG_B_Pin|LED7SEG_C_Pin|LED7SEG_D_Pin
+							|LED7SEG_E_Pin|LED7SEG_F_Pin|LED7SEG_G_Pin, GPIO_PIN_SET);
+	switch(num){
+	case 0:
+		HAL_GPIO_WritePin(GPIOB, LED7SEG_A_Pin|LED7SEG_B_Pin|LED7SEG_C_Pin|LED7SEG_D_Pin
+								|LED7SEG_E_Pin|LED7SEG_F_Pin, GPIO_PIN_RESET);
+		break;
+	case 1:
+		HAL_GPIO_WritePin(GPIOB, LED7SEG_B_Pin|LED7SEG_C_Pin, GPIO_PIN_RESET);
+	break;
+	case 2:
+		HAL_GPIO_WritePin(GPIOB, LED7SEG_A_Pin|LED7SEG_B_Pin|LED7SEG_D_Pin|LED7SEG_E_Pin
+								|LED7SEG_G_Pin, GPIO_PIN_RESET);
+		break;
+	case 3:
+		HAL_GPIO_WritePin(GPIOB, LED7SEG_A_Pin|LED7SEG_B_Pin|LED7SEG_C_Pin|LED7SEG_D_Pin
+								|LED7SEG_G_Pin, GPIO_PIN_RESET);
+		break;
+	case 4:
+		HAL_GPIO_WritePin(GPIOB, LED7SEG_B_Pin|LED7SEG_C_Pin|LED7SEG_F_Pin|LED7SEG_G_Pin, GPIO_PIN_RESET);
+		break;
+	case 5:
+		HAL_GPIO_WritePin(GPIOB, LED7SEG_A_Pin|LED7SEG_C_Pin|LED7SEG_D_Pin|LED7SEG_F_Pin
+								|LED7SEG_G_Pin, GPIO_PIN_RESET);
+		break;
+	case 6:
+		HAL_GPIO_WritePin(GPIOB, LED7SEG_A_Pin|LED7SEG_C_Pin|LED7SEG_D_Pin|LED7SEG_E_Pin
+								|LED7SEG_F_Pin|LED7SEG_G_Pin, GPIO_PIN_RESET);
+		break;
+	case 7:
+		HAL_GPIO_WritePin(GPIOB, LED7SEG_A_Pin|LED7SEG_B_Pin|LED7SEG_C_Pin, GPIO_PIN_RESET);
+		break;
+	case 8:
+		HAL_GPIO_WritePin(GPIOB, LED7SEG_A_Pin|LED7SEG_B_Pin|LED7SEG_C_Pin|LED7SEG_D_Pin
+								|LED7SEG_E_Pin|LED7SEG_F_Pin|LED7SEG_G_Pin, GPIO_PIN_RESET);
+		break;
+	case 9:
+		HAL_GPIO_WritePin(GPIOB, LED7SEG_A_Pin|LED7SEG_B_Pin|LED7SEG_C_Pin|LED7SEG_D_Pin
+								|LED7SEG_F_Pin|LED7SEG_G_Pin, GPIO_PIN_RESET);
+		break;
+	default:
+		break;
+	}
+}
+
+void run7SEG(){
+	if(timer3_flag == 1){
+		if(led_index >= 4) led_index = 0;
+		update7SEG(led_index++);
+		setTimer3(100);
+	}
 }

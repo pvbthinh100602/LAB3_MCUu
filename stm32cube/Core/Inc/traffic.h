@@ -9,6 +9,7 @@
 #define INC_TRAFFIC_H_
 
 #include "main.h"
+#include "global.h"
 
 void set_traffic1_red();
 void set_traffic1_green();
@@ -18,8 +19,10 @@ void set_traffic2_red();
 void set_traffic2_green();
 void set_traffic2_yellow();
 
-void display_traffic_7SEG(int, unsigned int);
-void display_7SEG(int, unsigned int);
+void updateBuffer7SEG(int, int);
+void update7SEG(int);
+void display_7SEG(int);
+void run7SEG();
 
 void toggle_traffic_red();
 void toggle_traffic_green();

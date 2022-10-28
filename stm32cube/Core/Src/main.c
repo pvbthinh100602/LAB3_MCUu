@@ -93,6 +93,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
   status = INIT;
+  setTimer3(10);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -101,7 +102,9 @@ int main(void)
   {
 	  fsm_automatic_run();
 	  fsm_manual_run();
+	  run7SEG();
     /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -205,10 +208,9 @@ static void MX_GPIO_Init(void)
                           |LED_RED2_Pin|LED_GREEN2_Pin|LED_YELLOW2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, DRIVER_7SEG_A0_Pin|DRIVER_7SEG_B0_Pin|DRIVER_7SEG_C0_Pin|DRIVER_7SEG_C2_Pin
-                          |DRIVER_7SEG_D2_Pin|DRIVER_7SEG_A3_Pin|DRIVER_7SEG_B3_Pin|DRIVER_7SEG_C3_Pin
-                          |DRIVER_7SEG_D3_Pin|DRIVER_7SEG_D0_Pin|DRIVER_7SEG_A1_Pin|DRIVER_7SEG_B1_Pin
-                          |DRIVER_7SEG_C1_Pin|DRIVER_7SEG_D1_Pin|DRIVER_7SEG_A2_Pin|DRIVER_7SEG_B2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, EN0_Pin|EN1_Pin|EN2_Pin|LED7SEG_B_Pin
+                          |LED7SEG_C_Pin|LED7SEG_D_Pin|LED7SEG_E_Pin|LED7SEG_F_Pin
+                          |LED7SEG_G_Pin|EN3_Pin|LED7SEG_A_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : BUTTON0_Pin */
   GPIO_InitStruct.Pin = BUTTON0_Pin;
@@ -231,14 +233,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : DRIVER_7SEG_A0_Pin DRIVER_7SEG_B0_Pin DRIVER_7SEG_C0_Pin DRIVER_7SEG_C2_Pin
-                           DRIVER_7SEG_D2_Pin DRIVER_7SEG_A3_Pin DRIVER_7SEG_B3_Pin DRIVER_7SEG_C3_Pin
-                           DRIVER_7SEG_D3_Pin DRIVER_7SEG_D0_Pin DRIVER_7SEG_A1_Pin DRIVER_7SEG_B1_Pin
-                           DRIVER_7SEG_C1_Pin DRIVER_7SEG_D1_Pin DRIVER_7SEG_A2_Pin DRIVER_7SEG_B2_Pin */
-  GPIO_InitStruct.Pin = DRIVER_7SEG_A0_Pin|DRIVER_7SEG_B0_Pin|DRIVER_7SEG_C0_Pin|DRIVER_7SEG_C2_Pin
-                          |DRIVER_7SEG_D2_Pin|DRIVER_7SEG_A3_Pin|DRIVER_7SEG_B3_Pin|DRIVER_7SEG_C3_Pin
-                          |DRIVER_7SEG_D3_Pin|DRIVER_7SEG_D0_Pin|DRIVER_7SEG_A1_Pin|DRIVER_7SEG_B1_Pin
-                          |DRIVER_7SEG_C1_Pin|DRIVER_7SEG_D1_Pin|DRIVER_7SEG_A2_Pin|DRIVER_7SEG_B2_Pin;
+  /*Configure GPIO pins : EN0_Pin EN1_Pin EN2_Pin LED7SEG_B_Pin
+                           LED7SEG_C_Pin LED7SEG_D_Pin LED7SEG_E_Pin LED7SEG_F_Pin
+                           LED7SEG_G_Pin EN3_Pin LED7SEG_A_Pin */
+  GPIO_InitStruct.Pin = EN0_Pin|EN1_Pin|EN2_Pin|LED7SEG_B_Pin
+                          |LED7SEG_C_Pin|LED7SEG_D_Pin|LED7SEG_E_Pin|LED7SEG_F_Pin
+                          |LED7SEG_G_Pin|EN3_Pin|LED7SEG_A_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
