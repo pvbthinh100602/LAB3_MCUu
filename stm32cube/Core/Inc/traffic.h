@@ -19,11 +19,6 @@ void set_traffic2_red();
 void set_traffic2_green();
 void set_traffic2_yellow();
 
-void updateBuffer7SEG(int, int);
-void update7SEG(int);
-void display_7SEG(int);
-void run7SEG();
-
 void toggle_traffic_red();
 void toggle_traffic_green();
 void toggle_traffic_yellow();

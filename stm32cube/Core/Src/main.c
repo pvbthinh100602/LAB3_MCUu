@@ -25,6 +25,7 @@
 #include "global.h"
 #include "fsm_automatic.h"
 #include "fsm_manual.h"
+#include "led7seg.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -102,7 +103,7 @@ int main(void)
   {
 	  fsm_automatic_run();
 	  fsm_manual_run();
-	  run7SEG();
+	  scan7SEG();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
