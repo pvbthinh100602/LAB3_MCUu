@@ -61,7 +61,7 @@ void button_reading(){
 		        //waiting for a period if the button is pressed in a duration
 				counter_for_button_pressed[i]++;
 				if(counter_for_button_pressed[i] == WAITING_TIME/TIMER_CYCLE){
-					button_state[i] = BUTTON_IS_PRESSED_IN_PERIOD;
+					button_state[i] = BUTTON_IS_LONG_PRESSED;
 					counter_for_button_pressed[i] = 0;
 					button_process(i);
 				}
@@ -76,7 +76,7 @@ void button_reading(){
 					button_process(i);
 				}
 				break;
-			case BUTTON_IS_PRESSED_IN_PERIOD:
+			case BUTTON_IS_LONG_PRESSED:
 	            //if the button continues being pressed in duration, the button only triggered in a period defined previous.
 				counter_for_button_pressed[i]++;
 				if(counter_for_button_pressed[i] == TIME_OUT_FOR_KEY_PRESSED/TIMER_CYCLE){

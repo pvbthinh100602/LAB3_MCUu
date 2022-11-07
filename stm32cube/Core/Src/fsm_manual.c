@@ -54,16 +54,13 @@ void fsm_manual_run(){
 			if(isButtonPressed(1) == 1){
 				//button2 pressed, increase value
 				counter_green++;
-				if(counter_green > 99) counter_green = 1;
+				if(counter_green >= config_red) counter_green = 1;
 				updateBuffer7SEG(2, counter_green);
 			}
 
 			if(isButtonPressed(2) == 1){
 				//button3 pressed, update the value
 				config_green = counter_green;
-				if(config_red <= config_green){
-					config_red = config_green + 1;
-				}
 				config_yellow = config_red - config_green;
 			}
 
@@ -88,14 +85,14 @@ void fsm_manual_run(){
 			if(isButtonPressed(1) == 1){
 				//button2 pressed, increase value
 				counter_yellow++;
-				if(counter_yellow > 99) counter_yellow = 1;
+				if(counter_yellow >= config_red) counter_yellow = 1;
 				updateBuffer7SEG(3, counter_yellow);
 			}
 
 			if(isButtonPressed(2) == 1){
 				//button3 pressed, update the value
 				config_yellow = counter_yellow;
-				config_red = config_yellow + config_green;
+				config_green = config_red - config_yellow;
 			}
 
 			if(isButtonPressed(0) == 1){

@@ -20,7 +20,7 @@
 
 #define BUTTON_IS_PRESSED 11
 #define BUTTON_IS_RELEASED 12
-#define BUTTON_IS_PRESSED_IN_PERIOD 13
+#define BUTTON_IS_LONG_PRESSED 13
 
 void button_reading();
 void button_process(int);
